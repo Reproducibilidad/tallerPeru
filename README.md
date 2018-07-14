@@ -3,7 +3,7 @@
 </center>
 
 
-# <center> Herramientas Informáticas <br></br>para la Investigación Interdisciplinaria</center>
+# <center> Herramientas Informáticas <br>para la Investigación Interdisciplinaria</center>
 
 <a id='beginning'></a>
 ### Contenidos
