@@ -1,9 +1,9 @@
 <center>
-<img src="https://github.com/MAGALLANESJoseManuel/BITSS_ToolsWorkshop/raw/master/FacultadIngenieria.png" style="width: 400px;"/>
+<img src="https://github.com/Reproducibilidad/tallerPeru/raw/master/LOGOLAB.png" style="width: 600px;"/>
 </center>
 
 
-# <center> Herramientas Computacionales <br></br>para la Investigación Interdisciplinaria Reproducible</center>
+# <center> Herramientas Informáticas <br></br>para la Investigación Interdisciplinaria</center>
 
 <a id='beginning'></a>
 ### Contenidos
@@ -17,10 +17,20 @@ ____
 <a id='part1'></a>
 ### 1. INFORMACIÓN GENERAL
 
+* Tipo: **Taller**
+* Diseño: **Abierto**
+* Modalidad: **Presencial**
+* Unidad Académica: **EGPP**
+* Duración: **8 horas**
 * Año: **2018**
-* Profesor:  <a href="http://www.pucp.edu.pe/profesor/jose-manuel-magallanes/" target="_blank">Dr. José Manuel Magallanes, PhD</a> ([jmagallanes@pucp.edu.pe](mailto:jmagallanes@pucp.edu.pe))<br>Profesor del Departamento de Ciencias Sociales, Pontificia Universidad Católica del Peru.<br>
-Senior Data Scientist del eScience Institute and Visiting Professor at Evans School of Public Policy and Governance, University of Washington.<br>
-Fellow Catalyst, Berkeley Initiative for Transparency in Social Sciences, UC Berkeley.
+* Fechas: **23 y 25 de JULIO**
+* Horario: **18:00 - 22:00 horas**
+* Tipo de Certificado: **Participación**
+* Profesor:  <a href="http://www.pucp.edu.pe/profesor/jose-manuel-magallanes/" target="_blank">Dr. José Manuel Magallanes, PhD</a> ([jmagallanes@pucp.edu.pe](mailto:jmagallanes@pucp.edu.pe))<br>
+	* 	Profesor del Departamento de Ciencias Sociales, Pontificia Universidad Católica del Peru.
+	*  Senior Data Scientist del eScience Institute and Visiting Professor at Evans School of Public Policy and Governance, University of Washington.
+	*  Fellow Catalyst, Berkeley Initiative for Transparency in Social Sciences, UC Berkeley.
+	*  Research Associate, Center for Social Complexity, George Mason University
 
 ____
 <a id='part2'></a>
@@ -36,7 +46,7 @@ ____
 * Participante del curso es capaz de utilizar diversas herramientas computacionales para llevar a cabo su trabajo de investigación en equipo multidisciplinario.
 
 #### Objetivos específicos
-* Participante aprende a usar R y Python con un enfoque de replicabilidad.
+* Participante aprende a usar lenguajes de programación con un enfoque de replicabilidad.
 * Participante organiza adecuadamente sus datos, códigos, referencias bibliográficas, gráficos y texto en repositorios online.
 * Participante facilita la automatización y reproducibilidad de sus códigos.
 * Participante produce su documentación en formatos PDF o HTML.
@@ -172,19 +182,19 @@ El desarrollo de estos contenidos ha sido posible gracias al grant del Berkeley 
 
 **RECONOCIMIENTO**
 
-<!--
-EL Dr. Magallanes agradece a la Pontificia Universidad Católica del Perú, por su apoyo en la elaboración de este trabajo.
-
-<center>
-<img src="https://github.com/MAGALLANESJoseManuel/BITSS_ToolsWorkshop/raw/master/LogoPUCP.jpg" style="width: 200px;"/>
-</center>
--->
-
 El autor reconoce el apoyo que el eScience Institute de la Universidad de Washington le ha brindado desde el 2015 para desarrollar su investigación en Ciencia de Datos.
 
 <center>
 <img src="https://github.com/MAGALLANESJoseManuel/BITSS_ToolsWorkshop/raw/master/LogoES.png" style="width: 200px;"/>
 </center>
+
+
+EL Dr. Magallanes agradece al Departamento de Ciencias Sociales de la Pontificia Universidad Católica del Perú, por las facilidades brindadas para llevar a cabo este trabajo.
+
+<center>
+<img src="https://github.com/MAGALLANESJoseManuel/BITSS_ToolsWorkshop/raw/master/LogoPUCP.jpg" style="width: 200px;"/>
+</center>
+
 
 
 [INICIO](#beginning)
