@@ -94,7 +94,7 @@ ____
 
 
 
-<td rowspan="2"> <a href="https://rawgit.com/MAGALLANESJoseManuel/BITSS_ToolsWorkshop/master/Sesiones/Sesion1_Modelo.html" target="_blank">GUIA</a> 
+<td rowspan="2"> <a href="https://rawgit.com/Reproducibilidad/tallerPeru/master/Sesion1_Modelo.html" target="_blank">GUIA</a> 
 </td>
 
 </tr>
