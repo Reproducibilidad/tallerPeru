@@ -83,7 +83,7 @@ Instala todo esto en tu máquina, veremos cada una de ellas en este curso, sobre
 
 _____
 
-[Volver al curso](https://magallanesjosemanuel.github.io/BITSS_ToolsWorkshop/)
+[Volver al curso](https://reproducibilidad.github.io/tallerPeru/)
 
 
 _____
