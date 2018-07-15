@@ -110,7 +110,7 @@ ____
     Limpieza
     </td>
     <td rowspan="2">
-    <a href="https://rawgit.com/Reproducibilidad/tallerPeru/master/Sesion2_PreProcesamento.html" target="_blank">Material</a> 
+    <a href="https://rawgit.com/Reproducibilidad/tallerPeru/master/Sesion2_PreProcesamiento.html" target="_blank">Material</a> 
     </td>
 </tr>
 </tr>
