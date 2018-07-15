@@ -8,3 +8,4 @@ dependencies:
   - jupyter-client==5.1.0
   - jupyter-core==4.4.0
   - pandas==0.23.0
+  - beautifulsoup4==4.6.0
