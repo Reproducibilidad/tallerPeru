@@ -12,9 +12,11 @@ Fellow Catalyst, **Berkeley Initiative for Transparency in Social Sciences, UC B
 
 En esta sesión final, vamos a utilizar el archivo que se creó en Python, donde hay diversos indicadores políticos a nivel de país. El archivo en cuestión será analizado en R, usando RStudio.
 
-RStudio es un entorno para usar R. Pero lo peculiar es que no sólo permite usar un archivo clásico de sintaxis (para lo cual RStudio es menos relevante), sino que también puede producir documentos en formato HTML y PDF. En este caso, veremos como convertir un archivo de códifos simples de R en un archivo más 'sofisticado'. Este archivo sofisticado combinará código de R y Latex, para producir un PDF. 
+RStudio es un entorno para usar R. Pero lo peculiar es que no sólo permite usar un archivo clásico de sintaxis (para lo cual RStudio es menos relevante), sino que también puede producir documentos en formato HTML y PDF. En este caso, veremos como convertir un archivo de códigos simples de R en un archivo más 'sofisticado'. Este archivo sofisticado combinará código de R y Latex, para producir un PDF. 
 
-Dado que usaremos Latex desde RStudio, podemos tomar el control detallado de lo que queremos mostrar en el PDF final. En nuestro caso, no solo veremos detalles de como producir lo que R genera, sino que además lo integraremos con un archivo de referencias bibliográficas producido desde Zotero; almacenaremos todo en GitHub; y veremos como conectar este repositorio con Overleaf para compartir versiones intermedias.
+Dado que usaremos Latex desde RStudio, podemos tomar el control detallado de lo que queremos mostrar en el PDF final. En nuestro caso, no sólo veremos detalles de cómo producir lo que R genera, sino que además lo integraremos con un archivo de referencias bibliográficas producido desde Zotero; almacenaremos todo en GitHub; y veremos cómo conectar este repositorio con Overleaf para compartir versiones intermedias con usuarios menos especializados.
+
+Nótese que cada vez que llamo a un 'paquete' de R usaré el comando **library**; este comando sólo activa un paquete (o biblioteca) si es que esta está previamente *instalada*. Para instalar debes usar el menu **Tools** y elige la opción **install.packages**. 
 
 ## Comandos básicos en R para exploración Univariada:
 
