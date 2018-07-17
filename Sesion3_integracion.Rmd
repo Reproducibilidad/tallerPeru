@@ -1,0 +1,337 @@
+<center> <h1>Herramientas Computacionales <br></br>para la Investigación Interdisciplinaria Reproducible</h1> </center>
+
+<br></br>
+
+* Profesor:  <a href="http://www.pucp.edu.pe/profesor/jose-manuel-magallanes/" target="_blank">Dr. José Manuel Magallanes, PhD</a> ([jmagallanes@pucp.edu.pe](mailto:jmagallanes@pucp.edu.pe))<br>Profesor del **Departamento de Ciencias Sociales, Pontificia Universidad Católica del Peru**.<br>
+Senior Data Scientist del **eScience Institute** and Visiting Professor at **Evans School of Public Policy and Governance, University of Washington**.<br>
+Fellow Catalyst, **Berkeley Initiative for Transparency in Social Sciences, UC Berkeley**.
+
+## Sesión 3: Integración
+
+<br></br>
+
+En esta sesión final, vamos a utilizar el archivo que se creó en Python, donde hay diversos indicadores políticos a nivel de país. El archivo en cuestión será analizado en R, usando RStudio.
+
+RStudio es un entorno para usar R. Pero lo peculiar es que no sólo permite usar un archivo clásico de sintaxis (para lo cual RStudio es menos relevante), sino que también puede producir documentos en formato HTML y PDF. En este caso, veremos como convertir un archivo de códifos simples de R en un archivo más 'sofisticado'. Este archivo sofisticado combinará código de R y Latex, para producir un PDF. 
+
+Dado que usaremos Latex desde RStudio, podemos tomar el control detallado de lo que queremos mostrar en el PDF final. En nuestro caso, no solo veremos detalles de como producir lo que R genera, sino que además lo integraremos con un archivo de referencias bibliográficas producido desde Zotero; almacenaremos todo en GitHub; y veremos como conectar este repositorio con Overleaf para compartir versiones intermedias.
+
+## Comandos básicos en R para exploración Univariada:
+
+```{r}
+# carga de datos
+filename="indexes.csv"
+dataidx=read.csv(filename, 
+                 stringsAsFactors = FALSE)
+
+# ver primeras filas los datos:
+head(dataidx)
+
+```
+
+Los datos ya llegaron 'limpios' desde Python.
+
+Como tenemos números en vez de factores, podemos preparar etiquetas para las gráficas:
+
+```{r}
+# creando etiquetas:
+level5=c("muy malo","malo","medio","bueno","muy bueno")
+level4=c("muy malo","malo","bueno","muy bueno")
+level3=c("muy malo","medio","muy bueno")
+```
+
+
+Aquí podemos ver la distribución de una variable:
+```{r}
+demoTable=table(dataidx[,5])
+demoTable
+```
+
+De ahí que:
+```{r}
+demoTable=table(dataidx[,5])
+names(demoTable)=level4
+demoTable
+```
+
+
+Ahora las frecuencias relativas:
+
+```{r}
+demoTableRel=round(prop.table(demoTable)*100,1)
+demoTableRel
+```
+
+Y aquí el plot que representa esta distribución:
+
+```{r}
+title='Distribución de la Democracia'
+paleta='red'
+barplot(demoTableRel,main=title,
+        col=paleta,ylim = c(0,100),
+        ylab = "%")
+```
+
+Los mismo hacemos para ver la Libertad económica en el mundo en una tabla:
+```{r}
+ecoTable=table(dataidx[,3])
+names(ecoTable)=level5
+ecoTable
+```
+
+Sus  frecuencias relativas:
+```{r}
+ecoTableRel=round(prop.table(ecoTable)*100,1)
+ecoTableRel
+```
+
+Y aquí el plot:
+```{r}
+title='Distribución de la Libertad Económica'
+paleta='red'
+barplot(ecoTableRel,main=title,
+        col=paleta,ylim = c(0,100),
+        ylab = "%")
+```
+
+
+La Libertad general en el mundo en una tabla:
+```{r}
+worldTable=table(dataidx[,2])
+names(worldTable)=level3
+worldTable
+```
+
+Ahora las frecuencias relativas:
+```{r}
+worldTableRel=round(prop.table(worldTable)*100,1)
+worldTableRel
+```
+
+
+Y aquí el plot:
+```{r}
+title='Distribución de la Libertad en el Mundo'
+paleta='red'
+barplot(worldTableRel,main=title,
+        col=paleta,ylim = c(0,100),
+        ylab = "%")
+
+```
+
+La Libertad de prensa en el mundo en una tabla:
+```{r}
+pressTable=table(dataidx[,4])
+names(pressTable)=level5
+pressTable
+
+```
+
+Sus frecuencias relativas:
+```{r}
+pressTableRel=round(prop.table(pressTable)*100,1)
+pressTableRel
+```
+
+Y aquí el plot que representa esta distribución:
+```{r}
+title='Distribución de la Libertad de Prensa'
+paleta='red'
+barplot(pressTableRel,main=title,
+        col=paleta,ylim = c(0,100),
+        ylab = "%")
+```
+
+
+Podemos mostrar los estadísticos de cada variable:
+
+```{r}
+summary(dataidx[,-1])
+```
+
+
+## Comandos básicos en R para exploración Bivariada:
+
+
+Si asumimos que estamos interesados en el impacto de los otros indices en el nivel de Democracia, podemos primero ver la relación que tiene esta variable con todas las demás:
+```{r}
+explanans=names(dataidx)[c(2:4)]
+corrDem=cor(x=dataidx[,5],
+            y=dataidx[,explanans],
+            use = "na.or.complete",
+            method = "spearman")
+corrDem
+
+```
+
+Veamos la correlación entre las variables independientes:
+
+```{r}
+corrTable=round(cor(dataidx[explanans],
+               use = "na.or.complete"),2)
+
+# ocultar media matriz
+corrTable[upper.tri(corrTable)]<-""
+as.data.frame(corrTable)
+
+```
+
+
+Finalmente, vemos los modelos propuestos. Primero sin la libertad mundial como independiente:
+```{r}
+LinRegA = lm(Democracy ~ ., data = dataidx[,c(3:5)])
+summary(LinRegA)
+
+```
+
+
+Luego con la libertad mundial
+
+```{r}
+LinRegB = lm(Democracy ~ ., data = dataidx[,c(2:5)])
+summary(LinRegB)
+```
+
+
+## Otros plots importantes
+
+Podemos pintar un mapa con la información que tenemos. Veamos primero el mapa:
+```{r}
+library(rgdal)
+folder='world_map'
+file='world_map.shp'
+mapaFile=file.path(folder,file)
+mapaMundo = rgdal::readOGR(mapaFile,stringsAsFactors=F) 
+plot(mapaMundo)
+```
+
+Para pintarlo, podemos crear conglomerados. Tenemos para ello que juntar añadir la información de los índices al mapa (no al revés). Veamos cuales son las claves:
+```{r}
+head(mapaMundo@data)
+```
+
+Usamos el campo respectivo para juntar los datos:
+
+```{r}
+# añadiendo información de indices al mapa:
+mapaMundoAll=merge(mapaMundo,
+                   dataidx, 
+                   by.x='NAME', 
+                   by.y='Country',all.x=F)
+```
+
+De ahí hagamos varios pasos:
+
+```{r}
+# nombres de las variables a utilizar
+dimensions=c("EconomicFreedom","PressFreedom","Democracy")
+```
+
+```{r}
+#creando subconjunto
+dataCluster=mapaMundoAll@data[,c(dimensions)]
+```
+
+
+```{r}
+# indicando que la data numerica es ordinal:
+dataCluster=as.data.frame(lapply(dataCluster,as.ordered))
+```
+
+```{r}
+# llamando librería:
+library(cluster)
+
+# creando matriz de distancias
+dist=daisy(dataCluster,metric = "gower")
+
+# aplicando algoritmo
+pam_fit <- pam(dist, diss = TRUE, k = 3)
+
+# añadiendo los clusters al mapa:
+mapaMundoAll$cluster=pam_fit$clustering
+```
+
+Ya tenemos los clusters, pero hay que recordar que los números asignados no son necesariamente 'reveladores':
+```{r}
+aggregate(Democracy~cluster, 
+          data=mapaMundoAll, 
+          FUN=mean,
+          na.rm=T)
+```
+
+Luego, debemos recodificar la columna cluster:
+
+```{r}
+library(car)
+mapaMundoAll$cluster<-recode(mapaMundoAll$cluster,
+                             "1=2;2=3;3=1")
+```
+
+
+Con los clusters calculados, podemos pintar el mundo:
+
+```{r}
+# que se pintara:
+varToPlot=mapaMundoAll$cluster
+
+#cuantos colores:
+numberOfColors = length(unique(varToPlot)) 
+
+#qué colores:
+library(RColorBrewer)
+colorForScale='Set2'
+paleta = brewer.pal(numberOfColors, colorForScale)
+
+# a dibujar:
+plot(mapaMundo,col='grey',border=0)
+plot(mapaMundoAll, col = paleta[varToPlot],border=F,add=T)
+legend('left', legend = c("TOP","MEDIUM","LOW"), 
+       fill = paleta,
+       cex = 0.6, 
+       bty = "n",
+       title="Conglomerado")
+```
+
+_____
+
+[Volver al curso](https://reproducibilidad.github.io/tallerPeru/)
+
+
+_____
+
+**AUSPICIO**: 
+
+El desarrollo de estos contenidos ha sido posible gracias al grant del Berkeley Initiative for Transparency in the Social Sciences (BITSS) at the Center for Effective Global Action (CEGA) at the University of California, Berkeley
+
+
+<center>
+<img src="https://github.com/MAGALLANESJoseManuel/BITSS_ToolsWorkshop/raw/master/LogoBitss.jpg" style="width: 300px;"/>
+</center>
+
+**RECONOCIMIENTO**
+
+<!--
+EL Dr. Magallanes agradece a la Pontificia Universidad Católica del Perú, por su apoyo en la elaboración de este trabajo.
+
+<center>
+<img src="https://github.com/MAGALLANESJoseManuel/BITSS_ToolsWorkshop/raw/master/LogoPUCP.jpg" style="width: 200px;"/>
+</center>
+-->
+
+El autor reconoce el apoyo que el eScience Institute de la Universidad de Washington le ha brindado desde el 2015 para desarrollar su investigación en Ciencia de Datos.
+
+<center>
+<img src="https://github.com/MAGALLANESJoseManuel/BITSS_ToolsWorkshop/raw/master/LogoES.png" style="width: 300px;"/>
+</center>
+
+<br>
+<br>
+
+
+
+
+
+
+
+

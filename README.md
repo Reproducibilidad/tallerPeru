@@ -124,25 +124,18 @@ ____
 <tr>
     <td rowspan="3">Herramientas colaborativos en línea para la investigación</td>
     <td>Elaboración de Documentos matriz</td>
-<td>Material</td>
+<td rowspan="3">
+<a href="https://rawgit.com/Reproducibilidad/tallerPeru/master/Sesion3_integracion.html" target="_blank">Material</a>
+</td>
 </tr>
 
 <tr>
 <td>Administración de Bibliografía</td>
-<td>Material</td>  
 </tr>
 
 <tr>
 <td>Herramientas de almacenamiento compartible</td>
-<td>Material</td>  
 </tr>
-
-
-<tr>
-    <td>Creación de documentos reproducibles y auditables</td>
-    <td>Ejercicio de Integración</td>
-<td>Material</td>
-<tr>
 
 
 
